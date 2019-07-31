@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Kocket Client</title>
+</head>
+<body>
+  <label for="msg">Write your msg: </label>
+  <input type="text" id="msg">
+  <button onclick="send()">send</button>
+  <div class="list"></div>
+  <script src="/dist/kocket-client.min.js"></script>
+  <script>
+    const $ = sel => document.querySelector(sel);
+    const c = tag => document.createElement(tag);
+    const ws = new Kocket('ws://localhost:7007');
+    const name = Math.floor(Math.random() * 30).toString().padStart(2, '0') + ' - client'
+    ws.use(async (ctx, n) => {
+      const json = ctx.getJson();
+      if (json) {
+        const row = c('div');
+        row.textContent = `${json.name}: ${json.msg}`;
+        row.style.padding = '5px 10px';
+        $('.list').appendChild(row);
+      }
+      await n();
+    });
+    function send() {
+      const msg = $('#msg').value;
+      if (msg) {
+        ws.send({
+          name,
+          msg,
+        });
+        $('#msg').value = '';
+      }
+    }
+  </script>
+</body>
+</html>

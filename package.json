@@ -1,0 +1,21 @@
+{
+  "name": "kocket-client",
+  "version": "0.0.1",
+  "description": "Websocket Client for Kocket",
+  "main": "src/main.ts",
+  "module": "dist/kocket-client.esm.js",
+  "umd": "dist/kocket-client.min.js",
+  "scripts": {
+    "build": "set NODE_ENV=production && rollup -c",
+    "dev": "rollup -w"
+  },
+  "devDependencies": {
+    "rollup": "^1.17.0",
+    "rollup-plugin-terser": "^5.1.1",
+    "rollup-plugin-typescript2": "^0.22.1",
+    "typescript": "^3.5.3"
+  },
+  "repository": "https://www.github.com/wjw99830/kocket-client.git",
+  "author": "wjw",
+  "license": "MIT"
+}
