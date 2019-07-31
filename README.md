@@ -5,7 +5,10 @@ Websocket client side framework, like koa.
 ```javascript
 const ws = new Kocket(myUrl);
 ws.addEventListener('open', () => console.log('opened'));
+
+// You still can do this, but it's not necessary.
 // ws.addEventListener('message', console.log);
+
 ws.use(async (ctx, n) => {
   const json = ctx.getJson();
   if (json !== null) {
@@ -15,3 +18,5 @@ ws.use(async (ctx, n) => {
   }
 });
 ```
+# Note
+Kocket is just a subclass of Websocket.
