@@ -19,4 +19,4 @@ ws.use(async (ctx, n) => {
 });
 ```
 # Note
-Kocket is just a subclass of Websocket.
+Kocket is just a subclass of Websocket. It just provide a middleware pattern.
